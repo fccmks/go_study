@@ -5,9 +5,11 @@ import "fmt"
 // fibonacci is a function that returns
 // a function that returns an int.
 func fibonacci() func() int {
-	res := 0
+	res := 1
+	def :=0
 	return func() int {
-		res = res + 1
+		def=res
+		res = res + def
 		return res
 	}
 }
