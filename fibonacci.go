@@ -6,10 +6,14 @@ import "fmt"
 // a function that returns an int.
 func fibonacci() func() int {
 	res := 1
-	def :=0
+	def := []int{}
 	return func() int {
-		def=res
-		res = res + def
+		if len(def) < 2 {
+			def = append(def, res)
+			return res
+		}
+		res = res + def[len(def)-2]
+		def = append(def, res)
 		return res
 	}
 }
